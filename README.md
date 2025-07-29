@@ -4,11 +4,11 @@ This project is a web-based interface that uses OpenAI’s ChatGPT API to manage
 
 ## Features
 
-- 🔍 **AI Summaries**: Generates brief, readable summaries for each ticket using the title and description.
-- 💡 **Task Suggestions**: Recommends ways to resolve each ticket, including optional code or documentation links.
-- 📌 **Priority Guidance**: Suggests which ticket to work on next based on priority and estimated completion time.
-- 📁 **CSV Upload**: Accepts ticket data in CSV format with fields like Summary, Description, Priority, and Estimate.
-- 🖥️ **User Interface**: Clean front-end displays ticket information and AI responses clearly.
+- **AI Summaries**: Generates brief, readable summaries for each ticket using the title and description.
+- **Task Suggestions**: Recommends ways to resolve each ticket, including optional code or documentation links.
+- **Priority Guidance**: Suggests which ticket to work on next based on priority and estimated completion time.
+- **CSV Upload**: Accepts ticket data in CSV format with fields like Summary, Description, Priority, and Estimate.
+- **User Interface**: Clean front-end displays ticket information and AI responses clearly.
 
 ## Technologies
 
