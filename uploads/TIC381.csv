@@ -1,0 +1,33 @@
+Summary,Issue key,Issue id,Issue Type,Status,Project key,Project name,Project type,Project lead,Project lead id,Project description,Priority,Resolution,Assignee,Assignee Id,Reporter,Reporter Id,Creator,Creator Id,Created,Updated,Last Viewed,Resolved,Due date,Votes,Description,Environment,Watchers,Watchers Id,Log Work,Log Work,Original estimate,Remaining Estimate,Time Spent,Work Ratio,Σ Original Estimate,Σ Remaining Estimate,Σ Time Spent,Security Level,Custom field (Affected services),Custom field (Applicable Processing Steps),Custom field (Category),Custom field (Change completion date),Custom field (Change reason),Custom field (Change risk),Custom field (Change start date),Custom field (Change type),Custom field (Code Improvement Suggestions),Custom field (Development),Custom field (Epic Color),Custom field (Epic Name),Custom field (Epic Status),Custom field (FD),Custom field (Flight Date),Custom field (Flight Duration),Custom field (Goals),Custom field (Impact),Custom field (Issue color),Custom field (Lines of Code),Custom field (Locked forms),Custom field (Open forms),Custom field (Priority),Custom field (Project overview key),Custom field (Project overview status),Custom field (QA Fail Steps),Custom field (Rank),Custom field (Reporter),Custom field (Reporter)Id,Custom field (Request Type),Custom field (Request language),Custom field (Request participants),Custom field (Review Started),Custom field (Review Time),Custom field (Reviewer),Custom field (Reviewer)Id,Satisfaction rating,Custom field (Satisfaction date),Custom field (Sentiment),Custom field (Severity),Custom field (Start date),Custom field (Story Points),Custom field (Story point estimate),Custom field (Submitted forms),Custom field (Target end),Custom field (Target start),Custom field (Team),Custom field (Time to Completion),Custom field (Total forms),Custom field (Vulnerability),Custom field (Why on Hold?),Custom field ([CHART] Date of First Response),Custom field ([CHART] Time in Status),Comment,Status Category,Status Category Changed
+Refactor Documentation into Several Pages,TIC-381,13613,Documentation,In Progress,TIC,Ticket System,software,Jonathan,712020:d67b4b8a-9508-4ea0-b812-b399a2d24976,,Medium,,Ruth,712020:ef3c2977-d10b-4818-8c36-06ef5624e4d2,Ruth Thomas,712020:ef3c2977-d10b-4818-8c36-06ef5624e4d2,Ruth Thomas,712020:ef3c2977-d10b-4818-8c36-06ef5624e4d2,9/6/2024 9:18,9/11/2024 7:53,9/24/2024 18:28,,,0,"Update the [Processing Technical Workflow|https://silentfalconuas.atlassian.net/wiki/spaces/PCI/pages/1671888897] documentation to exist in several pages, rather than one, to improve page loading and functionality, as well as general readability (such a massive wall of text as we have now can be difficult to sift through to find what you’re really looking for, and the current size of the document is making documentation incredibly laggy, at least on my end).
+
+*Documentation Sections:*
+
+* Create the “Processing Technical Documentation” page under the “Processing Technical Workflow” page, which will provide a brief description of the aims of the processing technical documentation pages, and under which all of the processing technical documentation pages will be nested. ✅ 
+* Create the following pages: ✅ 
+
+*Titles of Pages to Create*
+
+* Processing Technical - Jpegging (300s) ✅ 
+* Processing Technical - Stitching (400s) ✅ 
+* Processing Technical - AI (500s) ✅ 
+* Processing Technical - PCI Calculator (600s) ✅
+* Processing Technical - Visualize+PowerBI+Player Round 1 (700s) ✅ 
+* Processing Technical - Pavement Engineer Review (800s) ✅ 
+* Processing Technical - Visualization / Publishing Data (900s) ✅ 
+* Processing Technical - Delivery (1000s) ✅ 
+* Processing Technical - Invoice (1100s) ✅ 
+* Processing Technical - CICD (1200s) ✅ 
+* Processing Technical - Data Organization (1300s) ✅ 
+* Processing Technical - AI Process (1400s) ✅ 
+
+* Copy over the content for each page from the “Processing Technical Workflow” page. ✅ 
+** Update the headers for each page to appear consistently through each technical documentation page.
+** Update the links on each page (links for jumping to the top of page, to caller functions, etc.) to ensure that they link to the accurate part of the correct page.
+
+{panel:bgColor=#fffae6}
+The next steps may not be completed until after the ticket has undergone a primary review and been approved. After the first review has been completed, it should be moved back into “In Progress” for the completion of the final steps of the process, after which it may be reviewed again.
+{panel}
+
+* After all content from “Processing Technical Workflow” has been safely copied into new pages, remove all current content from the page.
+* Rename the “Processing Technical Workflow” page (currently the root page for all processing documentation) to “Processing Documentation” and provide on links to its child pages, as well as brief descriptions of what each child page covers.",,Ruth Thomas,712020:ef3c2977-d10b-4818-8c36-06ef5624e4d2,;09/Sep/24 9:35 AM;712020:ef3c2977-d10b-4818-8c36-06ef5624e4d2;21600,;09/Sep/24 1:45 PM;712020:ef3c2977-d10b-4818-8c36-06ef5624e4d2;7200,144000,115200,28800,20%,144000,115200,28800,,,,,,,,,,,,,,,,,,,,,,,,Medium (When convenient),,,,0|i00ht9:,Ruth Thomas,712020:ef3c2977-d10b-4818-8c36-06ef5624e4d2,,,,9/10/2024 12:38,,Jonathan Forsgren,712020:d67b4b8a-9508-4ea0-b812-b399a2d24976,,,,Major (Essential subsystem),,,,,,,,,,,,,,10/Sep/24 12:39 PM;712020:ef3c2977-d10b-4818-8c36-06ef5624e4d2;Submitted to review for primary review.,In Progress,9/6/2024 9:18

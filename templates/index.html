@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload CSV for Ticket Management</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+</head>
+
+<div id="landing-page" class="landing-container">
+    <div class="landing-content">
+        <div id="top-landing-page" class="top-landing-content">
+            <p class="landing-title">
+                TicketAssist
+                <img src="{{ url_for('static', filename='TicketAssist.png') }}" alt="Logo" class="logo">
+            </p>
+
+            <button id="begin-button" class="begin-button">Begin</button>
+        </div>
+        <div class="landing-text">
+            <p class="landing-subtitle">Your all-in-one solution for managing tickets efficiently and effectively.</p>
+            <p class="landing-description">
+                The Ticket Interactive System is a user-friendly application designed to help teams streamline their ticket management process. It allows you to:
+            </p>
+            <ul class="features-list">
+                <li><b>Upload CSV Files:</b> Quickly import ticket data from CSV files with just a click.</li>
+                <li><b>Filter Tickets by Assignee:</b> Easily locate tasks assigned to specific team members using the intuitive filter system.</li>
+                <li><b>View and Manage Tickets:</b> See a detailed list of tickets, including their title, priority, estimated time, and assignee.</li>
+                <li><b>Generate Summaries, Suggestions, and Recommendations:</b> Use AI-powered tools to:
+                    <ul>
+                        <li>Summarize ticket details for a quick overview.</li>
+                        <li>Get actionable suggestions to address tickets efficiently.</li>
+                        <li>Recommend the next ticket to tackle based on priority and deadlines.</li>
+                    </ul>
+                </li>
+                <li><b>Export Tickets to PDF:</b> Create professional, easy-to-share reports of your tickets sorted by priority or other criteria.</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<body>
+    <p class="body-title">
+        TicketAssist
+        <img src="{{ url_for('static', filename='TicketAssist.png') }}" alt="Body Logo" class="body-logo">
+    </p>
+    
+    <div id="save-exit-container">
+        <button id="save-exit-button" class="save-exit-button" onclick="navigateToLandingPage()">Save and Exit</button>
+    </div>
+    
+    <!-- Assignee filter dropdown -->
+
+    <div id="loading-spinner" class="spinner" style="display: none;"></div>
+
+    
+    <div class="main-container">
+        <div id="ticket-list-container">
+            <h2>Ticket List</h2>
+            <div id="ticket-container">
+                <div id="upload-container">
+                    <form id="upload-form">
+                        <input type="file" id="csvFile" accept=".csv" multiple required style="display: none;" />
+                        <label for="csvFile" class="upload-button">Choose Files</label>
+                        <button type="submit" class="upload-csv-button">Upload CSV</button>
+                        <button id="export-selected-button">Export Tickets</button>
+                        <div id="file-list" class="compact-file-list"></div>
+                    </form>
+                    <div id="filter-container">
+                        <!-- <label for="assignee-filter">Filter by Assignee:</label> -->
+                    </div>
+                </div>
+                <div id="sort-container">
+                    <label for="sort-options">Sort by:</label>
+                    <select id="sort-options" class="filter-button">
+                        <option value="">None</option>
+                        <option value="priority">Priority</option>
+                        <option value="original_estimate">Original Estimate</option>
+                    </select>
+                    <select id="assignee-filter" class="filter-button">
+                        <option value=""> Select Assignee </option>
+                    </select>
+                    
+                </div>
+                <!-- <div id="export-options">
+                    
+                    <label>
+                        <input type="checkbox" id="select-all-tickets"> Select All Tickets
+                    </label>
+                    
+                </div> -->
+                <div id="ticket-list">
+            
+                </div>
+            </div>
+            
+            
+        </div>
+
+        <div id="output-container">
+            <!-- Tab Navigation -->
+            <div class="tabs">
+                <button class="tab-button active" onclick="openTab('summary')">Summary</button>
+                <button class="tab-button" onclick="openTab('suggestion')">Suggestion</button>
+                <button class="tab-button" onclick="openTab('recommendation')">Recommendation</button>
+            </div>
+        
+            <!-- Summary Tab -->
+            <div class="tab-content" id="summary-tab">
+                <div class="action-container">
+                    <button id="summarize-button" class="modern-button">
+                        <span>Summarize Ticket</span>
+                        <div class="button-hover-effect">
+                    </button>
+                    <div id="loading-spinner-summarize" class="spinner" style="display: none;"></div>
+                </div>
+                <pre id="summary-output" class="ai-output">Summary output will appear here.</pre>
+            </div>
+        
+            <!-- Suggestion Tab -->
+            <div class="tab-content" id="suggestion-tab" style="display: none;">
+                <div class="action-container">
+                    <button id="suggest-button" class="modern-button">
+                        <span>Get Suggestion</span>
+                        <div class="button-hover-effect">
+                    </button>
+                    <div id="loading-spinner-suggest" class="spinner" style="display: none;"></div>
+                </div>
+                <pre id="suggestion-output" class="ai-output">Suggestion output will appear here.</pre>
+            </div>
+        
+            <!-- Recommendation Tab -->
+            <div class="tab-content" id="recommendation-tab" style="display: none;">
+                <div class="action-container">
+                    <button id="recommend-button" class="modern-button">
+                        <span>Get Recommendation</span>
+                        <div class="button-hover-effect">
+                    </button>
+                    <div id="loading-spinner-recommend" class="spinner" style="display: none;"></div>
+                </div>
+                <pre id="recommendation-output" class="ai-output">Recommendation output will appear here.</pre>
+            </div>
+            <!-- <div class="action-container">
+                <button id="export-button">Export Tickets as PDF</button>
+            </div> -->
+        </div>
+        
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+
+    <script>
+        document.getElementById('summarize-button').addEventListener('click', async () => {
+            openTab('summary');
+
+            if (!selectedTicket) {
+                alert("Select a ticket.");
+                return;
+            }
+            
+            document.getElementById('loading-spinner-summarize').style.display = 'inline-block';
+
+            // Call the OpenAI API or backend to summarize the ticket description
+            try {
+                const promptForSummary = `Generate a summary of this ticket. Title: ${selectedTicket.title}, Description: ${selectedTicket.description}`;
+                
+                const response = await fetch('/summarize_ticket', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ TIC: selectedTicket.TIC })
+                });
+
+                const result = await response.json();
+                if (response.ok) {
+                    document.getElementById('summary-output').textContent = 
+                        `Ticket: ${result.TIC}\nTitle: ${result.title}\nSummary:\n${result.summary}`;
+                } else {
+                    alert(`Error summarizing ticket: ${result.error}`);
+                }
+            } catch (error) {
+                console.error('Error summarizing ticket:', error);
+                alert('Error summarizing ticket.');
+            } finally {
+                // Hide the spinner after receiving the response
+                document.getElementById('loading-spinner-summarize').style.display = 'none';
+            }
+        });
+
+        document.getElementById('suggest-button').addEventListener('click', async () => {
+            openTab('suggestion');
+            if (!selectedTicket) {
+                alert("Select a ticket.");
+                return;
+            }
+
+            document.getElementById('loading-spinner-suggest').style.display = 'inline-block';
+
+            try {
+                const response = await fetch('/suggest_ticket', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ TIC: selectedTicket.TIC })
+                });
+
+                const result = await response.json();
+                if (response.ok) {
+                    // Call formatSuggestionOutput to process the output text and add it as HTML
+                    const suggestionText = `Ticket: ${result.TIC}\nTitle: ${result.title}\nSuggestion:\n${result.suggestion}`;
+                    formatMarkdownOutput(suggestionText, 'suggestion-output');
+                } else {
+                    alert(`Error getting suggestion: ${result.error}`);
+                }
+            } catch (error) {
+                console.error('Error getting suggestion:', error);
+                alert('Error getting suggestion.');
+            } finally {
+                document.getElementById('loading-spinner-suggest').style.display = 'none';
+            }
+        });
+
+        document.getElementById('recommend-button').addEventListener('click', async () => {
+            openTab('recommendation');
+
+            // Get the selected assignee from the dropdown
+            const assigneeFilter = document.getElementById('assignee-filter').value;
+
+            // Filter tickets based on the selected assignee
+            const assigneeTickets = filteredTickets.filter(ticket => ticket.name === assigneeFilter);
+
+            // Debugging: Log the selected assignee and filtered tickets
+            // console.log("Selected Assignee:", assigneeFilter);
+            // console.log("Filtered Tickets for Assignee:", assigneeTickets);
+
+            // Check if no assignee is selected or no tickets exist for the assignee
+            if (!assigneeFilter) {
+                alert("Please select an assignee to get a recommendation.");
+                return;
+            }
+
+            if (assigneeTickets.length === 0) {
+                alert(`No tickets available for assignee "${assigneeFilter}".`);
+                return;
+            }
+
+            // Show the loading spinner
+            document.getElementById('loading-spinner-recommend').style.display = 'inline-block';
+
+            try {
+                // Send filtered tickets to the backend for recommendation
+                const response = await fetch('/recommend_ticket', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ tickets: assigneeTickets }),
+                });
+
+                const result = await response.json();
+
+                if (response.ok) {
+                    // Format the recommendation text with Markdown
+                    const recommendationText = `### Ticket: ${result.TIC}\n**Title:** ${result.title}\n**Recommendation:**\n${result.recommendation}`;
+                    formatMarkdownOutput(recommendationText, 'recommendation-output'); // Render Markdown for recommendations
+                } else {
+                    alert(`Error getting recommendation: ${result.error}`);
+                }
+            } catch (error) {
+                console.error('Error getting recommendation:', error);
+                alert('Error getting recommendation.');
+            } finally {
+                // Hide the spinner
+                document.getElementById('loading-spinner-recommend').style.display = 'none';
+            }
+        });
+
+    </script>
+</body>
+</html>

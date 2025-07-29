@@ -1,0 +1,26 @@
+Summary,Issue key,Issue id,Issue Type,Status,Project key,Project name,Project type,Project lead,Project lead id,Project description,Priority,Resolution,Assignee,Assignee Id,Reporter,Reporter Id,Creator,Creator Id,Created,Updated,Last Viewed,Resolved,Due date,Votes,Description,Environment,Watchers,Watchers Id,Original estimate,Remaining Estimate,Time Spent,Work Ratio,Σ Original Estimate,Σ Remaining Estimate,Σ Time Spent,Security Level,Inward issue link (Relates),Custom field (Affected services),Custom field (Applicable Processing Steps),Custom field (Category),Custom field (Change completion date),Custom field (Change reason),Custom field (Change risk),Custom field (Change start date),Custom field (Change type),Custom field (Code Improvement Suggestions),Custom field (Development),Custom field (Epic Color),Custom field (Epic Name),Custom field (Epic Status),Custom field (FD),Custom field (Flight Date),Custom field (Flight Duration),Custom field (Goals),Custom field (Impact),Custom field (Issue color),Custom field (Lines of Code),Custom field (Locked forms),Custom field (Open forms),Custom field (Priority),Custom field (Project overview key),Custom field (Project overview status),Custom field (QA Fail Steps),Custom field (Rank),Custom field (Reporter),Custom field (Reporter)Id,Custom field (Request Type),Custom field (Request language),Custom field (Request participants),Custom field (Review Started),Custom field (Review Time),Custom field (Reviewer),Custom field (Reviewer)Id,Satisfaction rating,Custom field (Satisfaction date),Custom field (Sentiment),Custom field (Severity),Custom field (Start date),Custom field (Story Points),Custom field (Story point estimate),Custom field (Submitted forms),Custom field (Target end),Custom field (Target start),Custom field (Team),Custom field (Time to Completion),Custom field (Total forms),Custom field (Vulnerability),Custom field (Why on Hold?),Custom field ([CHART] Date of First Response),Custom field ([CHART] Time in Status),Status Category,Status Category Changed
+PCI Calc Overhaul,TIC-382,13614,AI,To Do,TIC,Ticket System,software,Jonathan Forsgren,712020:d67b4b8a-9508-4ea0-b812-b399a2d24976,,Medium,,Derick,712020:5a6c5c84-81c4-4acb-a5f7-f777310c118d,Derick-Louie M Trinidad,712020:5a6c5c84-81c4-4acb-a5f7-f777310c118d,Derick-Louie M Trinidad,712020:5a6c5c84-81c4-4acb-a5f7-f777310c118d,9/6/2024 12:28,9/6/2024 13:08,10/9/2024 23:35,,,0,"Classify Rasters
+
+·       Getting rasters from location (Pushyami)
+
+·       Commands for Slab Detection (Detectron2) (Chelsey)
+
+·       Commands for Distress Detection (Detectron2) (Chelsey/Prajakta)
+
+Preprocess Feature Classes
+
+·       Count slabs and overlapping distresses using geopandas (Derick)
+
+·       Counting overlapping distress using line sweep algorithm (Derick)
+
+Calculate PCI
+
+·       Concrete Totals Excel Sheet:
+
+o   It would be more efficient using default dictionaries instead of creating and excel sheet (Pushyami)
+
+·       Modify PCI calc to input default dictionary instead (Pushyami)
+
+Visualization (TBD)
+
+PDF Report (TBD)",,Derick-Louie M Trinidad,712020:5a6c5c84-81c4-4acb-a5f7-f777310c118d,,,,,,,,,TIC-294,,,,,,,,,,,,,,,,,,,,,,,Critical (ASAP!),,,,0|i00hsp:,Chelsey Toribio,63d7da6f790148a18092dd2c,,,,9/3/2024 10:00,,Chelsey Toribio,63d7da6f790148a18092dd2c,,,,Critical (Entire system),,,,,,,,,,,,,,To Do,9/6/2024 12:28
